@@ -1,0 +1,77 @@
+﻿/* Toàn trang: nền màu kem, căn giữa danh thiếp */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fdf6e3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+ 
+/* Tấm danh thiếp: tối đa 400px, tự co lại trên điện thoại */
+.danh-thiep {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 400px;
+  box-sizing: border-box;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #cccccc;
+  text-align: center;
+}
+ 
+/* Ảnh đại diện vuông (đã bỏ bo tròn) */
+.anh-dai-dien {
+  border-radius: 0;
+}
+ 
+h1 {
+  font-size: 24px;
+  margin: 12px 0 4px 0;
+}
+ 
+.chuc-danh {
+  color: #666666;
+  margin-top: 0;
+}
+ 
+.thong-tin {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+ 
+.thong-tin li {
+  padding: 6px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+ 
+/* Hàng mạng xã hội: xếp ngang, căn giữa, cách nhau 10px */
+.mang-xa-hoi {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+ 
+.mang-xa-hoi a {
+  padding: 6px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 16px;
+  color: #333333;
+  text-decoration: none;
+  font-size: 14px;
+}
+ 
+/* Nút: nền trắng, chữ đen, viền đen */
+.nut {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #222222;
+  border: 2px solid #222222;
+  text-decoration: none;
+  border-radius: 6px;
+}
