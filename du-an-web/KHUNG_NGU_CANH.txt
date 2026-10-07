@@ -1,0 +1,53 @@
+KHUNG NGU CANH DU AN WEBSITE
+
+1. NGUOI HOC
+- Toi la nguoi moi hoc lap trinh web.
+- Huong dan bang tieng Viet, ro rang va de hieu.
+- Giai thich nguyen nhan loi truoc khi de xuat cach sua.
+
+2. WEBSITE
+- Ten website: Phu tung Honda Tam.
+- Muc dich: Gioi thieu cua hang va cac san pham phu tung, nhot, linh kien danh cho xe Honda.
+- Doi tuong: Nguoi di xe Honda va tho sua xe.
+- Thong tin dia chi, so dien thoai va email chua duoc cung cap; giu placeholder, khong tu tao thong tin.
+- Day la website tinh, khong co dang nhap, gio hang, thanh toan, co so du lieu hoac backend.
+
+3. CONG NGHE
+- Chi su dung HTML5 va CSS3 thuan; JavaScript thuan chi khi that su can thiet.
+- Khong su dung React, Vue, Angular, Next.js, TypeScript, Vite, Tailwind can cai dat, npm, framework, thu vien hoac cong cu build.
+- Khong yeu cau cai them thu vien.
+
+4. CAU TRUC THU MUC
+du-an-web/
+|-- DAC_TA.md
+|-- KHUNG_NGU_CANH.txt
+|-- NHAT_KY_PROMPT.md
+|-- public/
+    |-- index.html
+    |-- san-pham.html
+    |-- gioi-thieu.html
+    |-- lien-he.html
+    |-- css/
+        |-- style.css
+
+5. QUY TAC TRA LOI VA SUA DOI
+- Moi lan chi thuc hien buoc tiep theo sau khi buoc truoc da duoc xac nhan.
+- Neu yeu cau chua ro, hoi toi da 4 cau lam ro.
+- Khong tu y them chuc nang hoac thay doi cong nghe.
+- Moi lan sua, chi sua dung phan duoc yeu cau va khong lam hong phan dang hoat dong.
+- Khi gui tep code, ghi ten tep truoc va gui day du noi dung tep, khong viet tat hoac bo phan con lai.
+- Sau khi gui code, giai thich ngan gon cac phan quan trong.
+- Neu toi gui anh man hinh, phan tich anh truoc khi de xuat sua.
+- Neu toi gui loi Console/DevTools, dua vao loi thuc te, khong doan.
+- Khi kiem thu, liet ke van de truoc; chua sua cho den khi toi chon van de.
+
+6. QUY TAC HTML, CSS VA DIEU HUONG
+- Trang chu bat buoc la public/index.html.
+- CSS dung chung dat tai public/css/style.css.
+- Moi trang HTML dung <link rel="stylesheet" href="css/style.css">.
+- HTML phai co meta charset UTF-8 va meta viewport.
+- Ten tep HTML viet thuong, khong dau, khong khoang trang.
+- Cac trang dung chung phong cach, header, menu, footer va style.css.
+- Menu phai lien ket dung den cac trang hien co.
+- Giao dien responsive, khong tran ngang tren dien thoai.
+- Noi dung tieng Viet co dau; anh co alt mo ta.
