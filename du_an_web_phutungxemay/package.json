@@ -1,0 +1,21 @@
+{
+  "name": "motorcycle-parts-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website thương mại điện tử bán phụ tùng xe máy",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node -e \"console.log('Chưa cấu hình test tự động (placeholder).')\""
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  }
+}

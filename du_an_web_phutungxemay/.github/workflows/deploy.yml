@@ -1,0 +1,45 @@
+name: CI and deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    name: Install and placeholder test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm install
+      - name: Run placeholder test
+        run: npm test
+
+  deploy:
+    name: Deploy to VPS
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1
+        env:
+          DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH }}
+          APP_NAME: ${{ secrets.PM2_APP_NAME }}
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          envs: DEPLOY_PATH,APP_NAME
+          script_stop: true
+          script: |
+            cd "$DEPLOY_PATH"
+            git pull origin main
+            npm install --omit=dev
+            pm2 restart "$APP_NAME" --update-env || pm2 start server.js --name "$APP_NAME"

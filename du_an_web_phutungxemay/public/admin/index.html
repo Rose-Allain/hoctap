@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101714" />
+    <meta name="description" content="Quản trị sản phẩm, tồn kho và hóa đơn RIDEFORM." />
+    <title>Quản trị — RIDEFORM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/admin.css" />
+    <script src="/js/admin.js" defer></script>
+  </head>
+  <body class="admin-body">
+    <section id="access-screen" class="access-screen" aria-labelledby="access-title">
+      <form id="access-form" class="access-card">
+        <a class="admin-wordmark" href="/" aria-label="RIDEFORM trang chủ"><span class="admin-mark">R/F</span><span>RIDEFORM<small>ADMINISTRATION</small></span></a>
+        <p class="admin-eyebrow">KHU VỰC QUẢN TRỊ</p>
+        <h1 id="access-title">Chào mừng<br /><em>trở lại.</em></h1>
+        <p class="access-copy">Nhập khóa quản trị đã cấu hình trong biến <code>ADMIN_API_KEY</code> của máy chủ.</p>
+        <label for="admin-key">Khóa truy cập</label>
+        <input id="admin-key" name="admin-key" type="password" autocomplete="current-password" required />
+        <button class="admin-button admin-button--primary admin-button--wide" type="submit">Mở trang quản trị <span aria-hidden="true">↗</span></button>
+        <p id="access-error" class="access-error" role="alert" hidden></p>
+        <a class="access-back" href="/">← Quay lại cửa hàng</a>
+      </form>
+      <div class="access-art" aria-hidden="true"><span>DETAILS<br />MAKE THE<br /><em>DIFFERENCE.</em></span><i></i><b></b></div>
+    </section>
+
+    <div id="admin-app" class="admin-app" hidden>
+      <aside class="admin-sidebar">
+        <a class="admin-wordmark" href="/" aria-label="RIDEFORM trang chủ"><span class="admin-mark">R/F</span><span>RIDEFORM<small>ADMINISTRATION</small></span></a>
+        <p class="sidebar-label">WORKSPACE</p>
+        <nav class="admin-nav" aria-label="Điều hướng quản trị">
+          <button class="admin-nav__item is-active" type="button" data-view="overview"><span class="nav-icon">◫</span> Tổng quan</button>
+          <button class="admin-nav__item" type="button" data-view="products"><span class="nav-icon">◈</span> Sản phẩm</button>
+          <button class="admin-nav__item" type="button" data-view="invoices"><span class="nav-icon">▤</span> Hóa đơn</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <span class="sidebar-status"><i></i> Hệ thống quản lý</span>
+          <a href="/">← Xem cửa hàng</a>
+        </div>
+      </aside>
+
+      <main class="admin-main">
+        <header class="admin-topbar">
+          <div class="admin-topbar__context"><span>RIDEFORM</span><span>/</span><strong id="breadcrumb-current">Tổng quan</strong></div>
+          <div class="admin-topbar__actions"><span class="admin-date" id="today-label"></span><button id="logout-button" class="admin-icon-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">↗</button></div>
+        </header>
+
+        <section id="view-overview" class="admin-view">
+          <div class="view-heading"><div><p class="admin-eyebrow">MONDAY, OCTOBER 12</p><h1>Chào bạn, <em>admin.</em></h1><p class="view-description">Tình hình cửa hàng của bạn trong hôm nay.</p></div><button class="admin-button admin-button--primary" type="button" data-view="products">Quản lý sản phẩm <span aria-hidden="true">↗</span></button></div>
+          <div class="metric-grid">
+            <article class="metric-card"><div class="metric-card__top"><span>Tổng sản phẩm</span><b>01</b></div><strong id="metric-products">—</strong><small><i class="metric-dot metric-dot--green"></i><span id="metric-active-products">— sản phẩm đang bán</span></small></article>
+            <article class="metric-card"><div class="metric-card__top"><span>Hóa đơn</span><b>02</b></div><strong id="metric-invoices">—</strong><small><i class="metric-dot"></i>Hóa đơn chưa lưu trữ</small></article>
+            <article class="metric-card metric-card--dark"><div class="metric-card__top"><span>Giá trị hóa đơn</span><b>03</b></div><strong id="metric-revenue">—</strong><small>Trừ hóa đơn đã hủy hoặc hoàn tiền</small></article>
+            <article class="metric-card"><div class="metric-card__top"><span>Sắp hết hàng</span><b>04</b></div><strong id="metric-low-stock">—</strong><small><i class="metric-dot metric-dot--warning"></i>Còn 5 sản phẩm hoặc ít hơn</small></article>
+          </div>
+          <div class="overview-grid">
+            <article class="panel overview-panel"><div class="panel-heading"><div><p class="admin-eyebrow">CATALOG</p><h2>Sản phẩm gần đây</h2></div><button class="text-button" type="button" data-view="products">Tất cả sản phẩm ↗</button></div><div id="overview-products" class="overview-list"></div></article>
+            <article class="panel overview-panel"><div class="panel-heading"><div><p class="admin-eyebrow">ORDERS</p><h2>Hóa đơn mới</h2></div><button class="text-button" type="button" data-view="invoices">Tất cả hóa đơn ↗</button></div><div id="overview-invoices" class="overview-list"></div></article>
+          </div>
+        </section>
+
+        <section id="view-products" class="admin-view" hidden>
+          <div class="view-heading"><div><p class="admin-eyebrow">PRODUCT MANAGEMENT</p><h1>Danh mục <em>sản phẩm.</em></h1><p class="view-description">Quản lý giá bán, tồn kho và thông tin phụ tùng.</p></div><button id="new-product-button" class="admin-button admin-button--primary" type="button"><span aria-hidden="true">＋</span> Thêm sản phẩm</button></div>
+          <div class="table-panel panel">
+            <div class="table-toolbar"><div class="table-title"><span id="product-count">0 sản phẩm</span><small>Danh mục cửa hàng</small></div><label class="admin-search"><span aria-hidden="true">⌕</span><input id="product-search" type="search" placeholder="Tìm tên, SKU..." /></label><select id="product-status-filter" class="admin-select" aria-label="Lọc trạng thái sản phẩm"><option value="all">Tất cả trạng thái</option><option value="active">Đang bán</option><option value="draft">Bản nháp</option><option value="inactive">Đã ẩn</option></select></div>
+            <div class="table-scroll"><table class="data-table"><thead><tr><th>SẢN PHẨM</th><th>SKU</th><th>NHÓM</th><th>TỒN KHO</th><th>GIÁ BÁN</th><th>TRẠNG THÁI</th><th><span class="sr-only">Thao tác</span></th></tr></thead><tbody id="product-table-body"></tbody></table></div>
+            <div id="product-empty" class="table-empty" hidden>Chưa có sản phẩm phù hợp.</div>
+          </div>
+        </section>
+
+        <section id="view-invoices" class="admin-view" hidden>
+          <div class="view-heading"><div><p class="admin-eyebrow">INVOICE MANAGEMENT</p><h1>Hóa đơn <em>bán hàng.</em></h1><p class="view-description">Theo dõi giao dịch, trạng thái đơn và thanh toán.</p></div><button id="new-invoice-button" class="admin-button admin-button--primary" type="button"><span aria-hidden="true">＋</span> Tạo hóa đơn</button></div>
+          <div class="table-panel panel">
+            <div class="table-toolbar"><div class="table-title"><span id="invoice-count">0 hóa đơn</span><small>Giao dịch cửa hàng</small></div><label class="admin-search"><span aria-hidden="true">⌕</span><input id="invoice-search" type="search" placeholder="Tìm mã, tên khách..." /></label><select id="invoice-status-filter" class="admin-select" aria-label="Lọc trạng thái hóa đơn"><option value="all">Tất cả trạng thái</option><option value="draft">Bản nháp</option><option value="pending">Chờ xác nhận</option><option value="confirmed">Đã xác nhận</option><option value="processing">Đang xử lý</option><option value="shipped">Đang giao</option><option value="delivered">Đã giao</option><option value="cancelled">Đã hủy</option><option value="refunded">Đã hoàn tiền</option></select></div>
+            <div class="table-scroll"><table class="data-table"><thead><tr><th>MÃ HÓA ĐƠN</th><th>KHÁCH HÀNG</th><th>NGÀY TẠO</th><th>SẢN PHẨM</th><th>THANH TOÁN</th><th>TRẠNG THÁI</th><th>TỔNG TIỀN</th><th><span class="sr-only">Thao tác</span></th></tr></thead><tbody id="invoice-table-body"></tbody></table></div>
+            <div id="invoice-empty" class="table-empty" hidden>Chưa có hóa đơn phù hợp.</div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="product-dialog" class="admin-dialog" aria-labelledby="product-dialog-title">
+      <form id="product-form" class="dialog-form">
+        <div class="dialog-heading"><div><p class="admin-eyebrow">CATALOG ITEM</p><h2 id="product-dialog-title">Thêm sản phẩm</h2></div><button class="admin-icon-button" type="button" data-close-dialog="product-dialog" aria-label="Đóng">×</button></div>
+        <input type="hidden" name="id" />
+        <div class="form-grid"><label class="field field--wide">Tên sản phẩm<input name="name" maxlength="200" required placeholder="Ví dụ: Bố thắng trước RIDEFORM" /></label><label class="field">Mã SKU<input name="sku" maxlength="80" required placeholder="RF-BT-001" /></label><div class="field-action"><label class="field" for="product-category">Danh mục<select name="category_id" id="product-category"><option value="">Chưa phân loại</option></select></label><button class="field-action__button" type="button" data-catalog-manage="categories">Quản lý</button></div><div class="field-action"><label class="field" for="product-brand">Thương hiệu<select name="brand_id" id="product-brand"><option value="">Chọn thương hiệu</option></select></label><button class="field-action__button" type="button" data-catalog-manage="brands">Quản lý</button></div><div class="field-action"><label class="field" for="product-supplier">Nhà cung cấp<select name="supplier_id" id="product-supplier"><option value="">Chọn nhà cung cấp</option></select></label><button class="field-action__button" type="button" data-catalog-manage="suppliers">Quản lý</button></div><label class="field">Giá bán (₫)<input name="price" type="number" min="0" step="1" required /></label><label class="field">Giá nhập (₫)<input name="cost_price" type="number" min="0" step="1" /></label><label class="field">Tồn kho<input name="stock_quantity" type="number" min="0" step="1" required value="0" /></label><label class="field">Trạng thái<select name="status"><option value="active">Đang bán</option><option value="draft">Bản nháp</option><option value="discontinued">Ngừng kinh doanh</option></select></label><label class="field field--wide">Ảnh đại diện (URL)<input name="image_url" type="url" maxlength="2000" placeholder="https://..." /></label><label class="field field--wide">Mô tả<textarea name="description" rows="4" placeholder="Thông tin tương thích, chất liệu, bảo hành..."></textarea></label><label class="check-field field--wide"><input name="is_active" type="checkbox" checked /> Hiển thị sản phẩm trên cửa hàng</label></div>
+        <p class="form-note">Thay đổi tồn kho sẽ được lưu vào nhật ký kho. Sản phẩm đã bán được sẽ được ẩn thay vì xóa lịch sử.</p>
+        <div class="dialog-actions"><button class="admin-button admin-button--quiet" type="button" data-close-dialog="product-dialog">Hủy</button><button class="admin-button admin-button--primary" type="submit">Lưu sản phẩm <span aria-hidden="true">↗</span></button></div>
+      </form>
+    </dialog>
+
+    <dialog id="catalog-dialog" class="admin-dialog admin-dialog--catalog" aria-labelledby="catalog-dialog-title">
+      <div class="dialog-form">
+        <div class="dialog-heading"><div><p id="catalog-dialog-eyebrow" class="admin-eyebrow">CATALOG MANAGEMENT</p><h2 id="catalog-dialog-title">Quản lý danh mục</h2></div><button class="admin-icon-button" type="button" data-close-dialog="catalog-dialog" aria-label="Đóng">×</button></div>
+        <p id="catalog-dialog-description" class="dialog-subtitle"></p>
+        <section id="catalog-list-panel">
+          <div class="catalog-toolbar"><span id="catalog-count"></span><button id="catalog-add-button" class="admin-button admin-button--primary" type="button">＋ Thêm mới</button></div>
+          <div id="catalog-list" class="catalog-list"></div>
+          <p id="catalog-empty" class="catalog-empty" hidden>Chưa có dữ liệu. Hãy thêm mục đầu tiên.</p>
+        </section>
+        <form id="catalog-form" hidden>
+          <input type="hidden" name="id" />
+          <div class="form-grid">
+            <label class="field field--wide">Tên<input name="name" maxlength="200" required /></label>
+            <div id="catalog-extra-fields" class="form-grid field--wide"></div>
+            <label class="check-field field--wide"><input name="is_active" type="checkbox" checked /> Đang sử dụng</label>
+          </div>
+          <p class="form-note">Mục đã ngừng sử dụng vẫn được giữ cho các sản phẩm và hóa đơn cũ.</p>
+          <div class="dialog-actions"><button id="catalog-cancel-edit" class="admin-button admin-button--quiet" type="button">Hủy</button><button id="catalog-save-button" class="admin-button admin-button--primary" type="submit">Lưu thay đổi</button></div>
+        </form>
+      </div>
+    </dialog>
+
+    <dialog id="invoice-dialog" class="admin-dialog admin-dialog--wide" aria-labelledby="invoice-dialog-title">
+      <form id="invoice-form" class="dialog-form">
+        <div class="dialog-heading"><div><p class="admin-eyebrow">SALES DOCUMENT</p><h2 id="invoice-dialog-title">Tạo hóa đơn</h2><p id="invoice-code-label" class="dialog-subtitle"></p></div><button class="admin-icon-button" type="button" data-close-dialog="invoice-dialog" aria-label="Đóng">×</button></div>
+        <input type="hidden" name="id" />
+        <div class="invoice-form-layout">
+          <div class="invoice-form-main">
+            <section class="form-section"><div class="form-section__heading"><span>01</span><div><h3>Thông tin khách hàng</h3><p>Thông tin lưu trên hóa đơn</p></div></div><div class="form-grid"><label class="field field--wide">Tên khách hàng<input name="customer_name" required maxlength="200" /></label><label class="field">Email<input name="customer_email" type="email" maxlength="255" /></label><label class="field">Số điện thoại<input name="customer_phone" maxlength="30" /></label><label class="field field--wide">Địa chỉ thanh toán<textarea name="billing_address" rows="2"></textarea></label><label class="field field--wide">Địa chỉ giao hàng<textarea name="shipping_address" rows="2"></textarea></label><label class="field field--wide">Ghi chú<textarea name="notes" rows="2"></textarea></label></div></section>
+            <section class="form-section"><div class="form-section__heading"><span>02</span><div><h3>Sản phẩm</h3><p>Giá được lấy tại thời điểm lập hóa đơn</p></div><button id="add-invoice-item" class="text-button" type="button">＋ Thêm dòng</button></div><div id="invoice-items-list" class="invoice-items-list"></div></section>
+            <section id="payment-history-section" class="form-section payment-history-section" hidden><div class="form-section__heading"><span>04</span><div><h3>Lịch sử thanh toán</h3><p>Các khoản đã ghi nhận cho hóa đơn</p></div></div><div id="payment-history" class="payment-history"></div></section>
+            <section id="status-history-section" class="form-section payment-history-section" hidden><div class="form-section__heading"><span>05</span><div><h3>Lịch sử trạng thái</h3><p>Các lần cập nhật hóa đơn</p></div></div><div id="status-history" class="payment-history"></div></section>
+          </div>
+          <aside class="invoice-form-aside"><div class="form-section__heading"><span>03</span><div><h3>Chi tiết hóa đơn</h3><p>Trạng thái và khoản thu</p></div></div><label class="field">Trạng thái<select name="status"><option value="draft">Bản nháp</option><option value="pending">Chờ xác nhận</option><option value="confirmed">Đã xác nhận</option><option value="processing">Đang xử lý</option><option value="shipped">Đang giao</option><option value="delivered">Đã giao</option><option value="cancelled">Đã hủy</option><option value="refunded">Đã hoàn tiền</option></select></label><label class="field">Chiết khấu (₫)<input name="discount_amount" type="number" min="0" step="1" value="0" /></label><label class="field">Thuế (₫)<input name="tax_amount" type="number" min="0" step="1" value="0" /></label><label class="field">Phí giao hàng (₫)<input name="shipping_fee" type="number" min="0" step="1" value="0" /></label><div class="invoice-totals"><div><span>Tạm tính</span><strong id="invoice-subtotal">0 ₫</strong></div><div><span>Chiết khấu</span><strong id="invoice-discount">− 0 ₫</strong></div><div class="invoice-totals__total"><span>Tổng thanh toán</span><strong id="invoice-total">0 ₫</strong></div></div><button id="record-payment-button" class="admin-button admin-button--quiet admin-button--wide" type="button" hidden>＋ Ghi nhận thanh toán</button></aside>
+        </div>
+        <div class="dialog-actions"><button class="admin-button admin-button--quiet" type="button" data-close-dialog="invoice-dialog">Hủy</button><button class="admin-button admin-button--primary" type="submit">Lưu hóa đơn <span aria-hidden="true">↗</span></button></div>
+      </form>
+    </dialog>
+
+    <dialog id="payment-dialog" class="admin-dialog admin-dialog--small" aria-labelledby="payment-dialog-title">
+      <form id="payment-form" class="dialog-form">
+        <div class="dialog-heading"><div><p class="admin-eyebrow">PAYMENT ENTRY</p><h2 id="payment-dialog-title">Ghi nhận thanh toán</h2></div><button class="admin-icon-button" type="button" data-close-dialog="payment-dialog" aria-label="Đóng">×</button></div>
+        <input type="hidden" name="invoice_id" />
+        <p id="payment-invoice-label" class="payment-invoice-label"></p>
+        <label class="field">Số tiền (₫)<input name="amount" type="number" min="1" step="1" required /></label>
+        <label class="field">Phương thức<select name="method"><option value="cash">Tiền mặt</option><option value="bank_transfer">Chuyển khoản</option><option value="card">Thẻ</option><option value="e_wallet">Ví điện tử</option><option value="cod">Thu hộ (COD)</option><option value="other">Khác</option></select></label>
+        <label class="field">Mã giao dịch<input name="transaction_code" maxlength="120" /></label>
+        <label class="field">Ghi chú<textarea name="note" rows="2"></textarea></label>
+        <div class="dialog-actions"><button class="admin-button admin-button--quiet" type="button" data-close-dialog="payment-dialog">Hủy</button><button class="admin-button admin-button--primary" type="submit">Lưu khoản thu</button></div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="admin-toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

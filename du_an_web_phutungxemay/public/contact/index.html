@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101714" />
+    <meta name="description" content="Liên hệ RIDEFORM để hỏi về phụ tùng, lựa chọn sản phẩm và hỗ trợ dành cho gara." />
+    <title>Liên hệ — RIDEFORM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/css/site.css" />
+    <script src="/js/store-config.js" defer></script>
+    <script src="/js/site.js" defer></script>
+    <script src="/js/contact.js" defer></script>
+  </head>
+  <body>
+    <div class="announcement"><span class="announcement__dot"></span><p>Chọn đúng phụ tùng. Chạy xe tự tin hơn.</p><span class="announcement__divider"></span><a href="/products/">Tra cứu sản phẩm <span aria-hidden="true">↗</span></a></div>
+    <header class="site-header" id="top"><div class="header-main wrap"><a href="/" class="brand" aria-label="RIDEFORM — trang chủ"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><path d="M8 34.5 20.3 10h7L18.8 34.5H8Z"/><path d="M25.5 34.5 34.4 17h6L31.5 34.5h-6Z"/><path d="M8 39h32"/></svg></span><span class="brand__wordmark"><span>RIDEFORM</span><small>PARTS · SERVICE · CULTURE</small></span></a><nav class="main-nav" aria-label="Điều hướng chính"><a href="/">Trang chủ</a><a href="/products/">Sản phẩm</a><a href="/categories/">Danh mục</a><a href="/about/">Giới thiệu</a><a class="is-current" href="/contact/">Liên hệ</a></nav><div class="header-actions"><a class="header-help" href="/contact/">Cần tư vấn?</a><button id="cart-button" class="cart-trigger" type="button" aria-label="Mở giỏ hàng"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h16l-1.2 12H5.2L4 8Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg><span class="cart-trigger__label">Giỏ hàng</span><span id="cart-count" class="cart-count" aria-live="polite">0</span></button><button id="mobile-menu-button" class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Mở menu"><span></span><span></span></button></div></div><nav id="mobile-nav" class="mobile-nav wrap" aria-label="Điều hướng di động" hidden><a href="/">Trang chủ</a><a href="/products/">Sản phẩm</a><a href="/categories/">Danh mục</a><a href="/about/">Giới thiệu</a><a href="/contact/">Liên hệ</a></nav><div class="header-rule"></div></header>
+
+    <main>
+      <section class="catalog-page-heading wrap"><div class="breadcrumb"><a href="/">Trang chủ</a><span>/</span><span>Liên hệ</span></div><div class="section-heading section-heading--products"><div><p class="eyebrow eyebrow--dark">WE'RE HERE FOR YOUR RIDE</p><h1>Hãy nói về<br/><em>chiếc xe của bạn.</em></h1></div><p class="section-heading__aside">Cần tìm đúng mã phụ tùng, muốn hỏi về sản phẩm hay đang chuẩn bị danh sách cho gara? Hãy gửi thông tin để bắt đầu.</p></div></section>
+
+      <section class="wrap contact-layout">
+        <div class="contact-main">
+          <div class="contact-cards">
+            <article class="contact-card"><span class="contact-card__index">01 / EMAIL</span><span class="contact-card__icon">@</span><h2>Email cửa hàng</h2><a id="contact-email" class="contact-card__value" href="#contact-form">Đang cập nhật</a><p>Gửi câu hỏi chi tiết hoặc danh sách phụ tùng cần tra cứu.</p></article>
+            <article class="contact-card"><span class="contact-card__index">02 / PHONE &amp; ZALO</span><span class="contact-card__icon">↗</span><h2>Hotline / Zalo</h2><a id="contact-phone" class="contact-card__value" href="#contact-form">Đang cập nhật</a><p>Trao đổi nhanh về sản phẩm và khả năng tương thích.</p></article>
+            <article class="contact-card"><span class="contact-card__index">03 / VISIT</span><span class="contact-card__icon">⌖</span><h2>Địa chỉ cửa hàng</h2><p id="contact-address" class="contact-card__value">Đang cập nhật</p><p>Thông tin địa chỉ sẽ được bổ sung bởi cửa hàng.</p></article>
+          </div>
+
+          <section class="contact-form-panel" id="contact-form-section" aria-labelledby="contact-form-title">
+            <div class="contact-form-panel__heading"><p class="eyebrow eyebrow--dark">SEND A MESSAGE</p><h2 id="contact-form-title">Bạn cần hỗ trợ gì?</h2><p>Để được tư vấn chính xác, hãy ghi rõ hãng xe, dòng xe và năm sản xuất.</p></div>
+            <form id="contact-form" class="contact-form">
+              <div class="contact-form__row"><label>Họ và tên<input name="name" autocomplete="name" required maxlength="120" placeholder="Tên của bạn" /></label><label>Số điện thoại<input name="phone" autocomplete="tel" required maxlength="30" placeholder="Số điện thoại liên hệ" /></label></div>
+              <div class="contact-form__row"><label>Email<input name="email" type="email" autocomplete="email" required maxlength="180" placeholder="email@vidu.com" /></label><label>Chủ đề<select name="topic"><option value="Tư vấn chọn phụ tùng">Tư vấn chọn phụ tùng</option><option value="Khả năng tương thích">Khả năng tương thích</option><option value="Gara / đơn hàng số lượng">Gara / đơn hàng số lượng</option><option value="Khác">Khác</option></select></label></div>
+              <label>Thông tin xe và câu hỏi<textarea name="message" required minlength="10" maxlength="2000" rows="5" placeholder="Ví dụ: Honda Wave RSX, đời 2022 — tôi cần tìm... "></textarea></label>
+              <div class="contact-form__actions"><button class="button button--primary" type="submit">Soạn email gửi cửa hàng <span aria-hidden="true">↗</span></button><p id="contact-form-status" role="status" aria-live="polite"></p></div>
+              <p class="contact-form__note">Nút gửi sẽ mở ứng dụng email trên thiết bị của bạn. Cửa hàng cần cấu hình email nhận trong <code>public/js/store-config.js</code>.</p>
+            </form>
+          </section>
+        </div>
+
+        <aside class="contact-aside"><p class="eyebrow">A QUICK CHECKLIST</p><h2>Giúp chúng tôi<br/><em>giúp bạn nhanh hơn.</em></h2><p>Khi hỏi về phụ tùng, hãy chuẩn bị:</p><ul><li>Hãng và tên dòng xe</li><li>Năm sản xuất hoặc phiên bản</li><li>Mã SKU, nếu bạn đã có</li><li>Ảnh chi tiết cần thay, khi phù hợp</li></ul><a class="text-link text-link--light" href="/products/">Tra cứu danh mục trước <span aria-hidden="true">↗</span></a><div class="contact-aside__fine">Đối chiếu thông tin xe trước khi đặt hàng để hạn chế chọn nhầm phiên bản.</div></aside>
+      </section>
+
+      <section class="contact-bottom-cta"><div class="wrap"><p class="eyebrow eyebrow--dark">NOT READY TO MESSAGE?</p><h2>Bắt đầu với danh mục<br/><em>phụ tùng của bạn.</em></h2><a class="button button--primary" href="/categories/">Chọn danh mục <span aria-hidden="true">↗</span></a></div></section>
+    </main>
+
+    <footer class="site-footer"><div class="wrap footer-main"><div class="footer-brand-col"><a href="/" class="brand brand--footer"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><path d="M8 34.5 20.3 10h7L18.8 34.5H8Z"/><path d="M25.5 34.5 34.4 17h6L31.5 34.5h-6Z"/><path d="M8 39h32"/></svg></span><span class="brand__wordmark"><span>RIDEFORM</span><small>PARTS · SERVICE · CULTURE</small></span></a><p>Phụ tùng có chọn lọc cho những người luôn muốn chiếc xe tốt hơn.</p></div><div class="footer-links"><div><strong>Khám phá</strong><a href="/products/">Sản phẩm</a><a href="/categories/">Danh mục</a><a href="/about/">Giới thiệu</a></div><div><strong>Hỗ trợ</strong><a href="#contact-form-section">Gửi câu hỏi</a><a href="/products/">Tra cứu sản phẩm</a><a href="/">Trang chủ</a></div></div></div><div class="wrap footer-bottom"><span>© <span id="current-year"></span> RIDEFORM. Made for the ride.</span><span>Thiết kế cho người hiểu xe.</span></div></footer>
+  </body>
+</html>
